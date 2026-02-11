@@ -35,7 +35,19 @@ public class EmpleadoController {
         }
 
     }
-
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateEmpleado(
+            @PathVariable Integer id,
+            @Valid @RequestBody Empleado empleadoRequest) {
+        try {
+            Empleado updated = empleadoService.uptadeEmpleado(id, empleadoRequest); // <- coincide con la interfaz
+            return ResponseEntity.ok(updated);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 
 }
 
