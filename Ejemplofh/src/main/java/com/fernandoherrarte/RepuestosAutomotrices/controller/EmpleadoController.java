@@ -40,7 +40,7 @@ public class EmpleadoController {
             @PathVariable Integer id,
             @Valid @RequestBody Empleado empleadoRequest) {
         try {
-            Empleado updated = empleadoService.uptadeEmpleado(id, empleadoRequest); // <- coincide con la interfaz
+            Empleado updated = empleadoService.uptadeEmpleado(id, empleadoRequest);
             return ResponseEntity.ok(updated);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
@@ -48,7 +48,10 @@ public class EmpleadoController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEmpleado(@PathVariable Integer id) {empleadoService.deleteEmpleado(id);
+        return ResponseEntity.noContent().build();
+    }
 }
 
 
