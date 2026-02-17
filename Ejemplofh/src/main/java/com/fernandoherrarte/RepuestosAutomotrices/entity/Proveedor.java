@@ -24,7 +24,7 @@ public class Proveedor {
     @Column(name = "email_proveedor", nullable = false, length = 100)
     private String emailProveedor;
 
-    // ===== Constructors =====
+
     public Proveedor() {
     }
 
@@ -36,7 +36,7 @@ public class Proveedor {
         this.emailProveedor = emailProveedor;
     }
 
-    // ===== Getters & Setters =====
+
     public Integer getIdProveedor() {
         return idProveedor;
     }
